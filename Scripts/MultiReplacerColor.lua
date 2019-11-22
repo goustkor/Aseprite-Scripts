@@ -1,4 +1,5 @@
 local pc = app.pixelColor
+local scale = app.preferences.general.screen_scale
 
 tr = 0
 
@@ -44,7 +45,12 @@ function addReplacer()
     color=app.Color }
 
     bounds = dlg.bounds
-    dlg.bounds = Rectangle(bounds.x, bounds.y, bounds.width, bounds.height + 45)
+    dlg.bounds = Rectangle(
+        bounds.x,
+        bounds.y,
+        bounds.width,
+        bounds.height + 45*scale
+    )
     
     tr = tr + 1
 end
@@ -56,7 +62,7 @@ end
 
 addReplacer()
 
-dlg.bounds = Rectangle(bounds.x, bounds.y, 150, 110)
+dlg.bounds = Rectangle(bounds.x, bounds.y, 150*scale, 110*scale)
 
 dlg:show{wait = false}
 
